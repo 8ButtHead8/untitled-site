@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Светлана Жукова — Профориентация для школьников онлайн</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #FDF8F1;
+      --cream-2:     #F5EEE3;
+      --cream-3:     #EDE4D5;
+      --green:       #1E3D2F;
+      --green-mid:   #2E5C44;
+      --green-light: #E6EFE9;
+      --amber:       #B8731A;
+      --amber-2:     #E09830;
+      --amber-pale:  #FBF0DC;
+      --dark:        #1A1A18;
+      --muted:       #6A6860;
+      --border:      #D8D0C0;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-size: 17px;
+      line-height: 1.72;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 52px;
+      background: rgba(253,248,241,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px; font-weight: 500; color: var(--green); letter-spacing: 0.01em;
+    }
+    .nav-sub { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+    .nav-cta {
+      background: var(--green); color: var(--white);
+      font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 11px 26px; border: none; cursor: pointer; text-decoration: none;
+      transition: background .22s;
+    }
+    .nav-cta:hover { background: var(--green-mid); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 55% 45%;
+      padding-top: 64px;
+    }
+
+    .hero-left {
+      background: var(--green);
+      padding: 88px 72px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-left::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: rgba(224,152,48,.07);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--amber-2); margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 4.2vw, 62px); font-weight: 400; line-height: 1.12;
+      color: var(--white); margin-bottom: 26px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--amber-2); }
+    .hero-desc {
+      font-size: 16px; color: rgba(255,255,255,.68);
+      max-width: 420px; margin-bottom: 48px; line-height: 1.75;
+    }
+    .hero-desc strong { color: rgba(255,255,255,.9); font-weight: 600; }
+
+    .btn-amber {
+      display: inline-block;
+      background: var(--amber); color: var(--white);
+      font-size: 14px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 18px 40px; border: none; cursor: pointer; text-decoration: none;
+      transition: background .22s, transform .18s; align-self: flex-start;
+    }
+    .btn-amber:hover { background: #9A5E10; transform: translateY(-2px); }
+    .hero-micro { margin-top: 18px; font-size: 13px; color: rgba(255,255,255,.38); }
+
+    .hero-right {
+      background: var(--cream-2);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 80px 56px;
+    }
+
+    /* ─── HERO RIGHT: full-bleed photo ─── */
+    .hero-right {
+      position: relative; overflow: hidden;
+      padding: 0 !important;
+    }
+    .hero-photo-full {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .hero-photo-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(30,61,47,.92) 0%, rgba(30,61,47,.5) 60%, transparent 100%);
+      padding: 40px 44px 36px;
+    }
+    .expert-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 500; color: var(--white);
+    }
+    .expert-title {
+      font-size: 13px; color: rgba(255,255,255,.65);
+      margin-top: 4px; letter-spacing: 0.04em;
+    }
+    .hero-stats {
+      display: flex; gap: 28px; margin-top: 24px;
+      padding-top: 20px; border-top: 1px solid rgba(255,255,255,.2);
+    }
+    .stat { text-align: center; }
+    .stat-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 600; color: var(--amber-2); display: block; line-height: 1;
+    }
+    .stat-l { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 4px; }
+
+    /* ─── PHOTO BANNER ─── */
+    .photo-banner {
+      position: relative; height: 480px; overflow: hidden;
+    }
+    .photo-banner img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
+    }
+    .photo-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(30,61,47,.82) 0%, rgba(30,61,47,.3) 55%, transparent 100%);
+      display: flex; align-items: center; padding: 0 72px;
+    }
+    .photo-banner-text { max-width: 480px; }
+    .photo-banner-text .tag { color: var(--amber-2); }
+    .photo-banner-text .h2 { color: var(--white); margin-bottom: 16px; }
+    .photo-banner-text p { color: rgba(255,255,255,.72); font-size: 16px; line-height: 1.72; }
+
+    /* ─── SHARED ─── */
+    section { padding: 96px 52px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 14px;
+    }
+    .h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px,3.4vw,48px); font-weight: 400; line-height: 1.18;
+      color: var(--green); margin-bottom: 18px;
+    }
+    .h2 em { font-style: italic; }
+    .lead { font-size: 17px; color: var(--muted); max-width: 540px; margin-bottom: 52px; }
+
+    /* ─── AHA ─── */
+    .aha {
+      background: var(--amber-pale);
+      text-align: center; padding: 72px 52px;
+      border-top: 3px solid var(--amber); border-bottom: 3px solid var(--amber);
+    }
+    .aha .tag { color: var(--amber); }
+    .aha .h2 { margin: 0 auto 16px; max-width: 680px; }
+    .aha-lead { color: var(--muted); font-size: 17px; max-width: 520px; margin: 0 auto 40px; }
+
+    /* ─── BENEFITS ─── */
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 2px; background: var(--border);
+      border: 2px solid var(--border);
+    }
+    .benefit {
+      background: var(--white); padding: 48px 40px;
+      position: relative; overflow: hidden; transition: background .25s;
+    }
+    .benefit:hover { background: var(--cream); }
+    .benefit-bg-n {
+      position: absolute; top: 8px; right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 90px; font-weight: 300; color: var(--green-light);
+      line-height: 1; user-select: none;
+    }
+    .benefit-icon { font-size: 28px; margin-bottom: 18px; display: block; }
+    .benefit-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 500; color: var(--green); margin-bottom: 10px;
+    }
+    .benefit-p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+
+    /* ─── RESONANCE ─── */
+    .resonance { background: var(--cream-2); }
+    .resonance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .resonance-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .resonance-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 22px; background: var(--white);
+      border-left: 3px solid var(--amber);
+      font-size: 16px; transition: transform .2s;
+    }
+    .resonance-list li:hover { transform: translateX(4px); }
+    .resonance-list li::before { content: '→'; color: var(--amber); flex-shrink: 0; margin-top: 1px; }
+
+    .sticky-cta {
+      background: var(--green); padding: 44px 40px;
+      position: sticky; top: 88px;
+    }
+    .sticky-cta .h2 { color: var(--white); font-size: 30px; margin-bottom: 14px; }
+    .sticky-cta-lead { color: rgba(255,255,255,.6); font-size: 15px; margin-bottom: 32px; }
+    .btn-white {
+      display: block; width: 100%; text-align: center;
+      background: var(--white); color: var(--green);
+      font-size: 14px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 18px; text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-white:hover { background: var(--amber-pale); }
+
+    /* ─── STEPS ─── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; background: var(--border);
+      border: 2px solid var(--border); margin-top: 52px;
+    }
+    .step { background: var(--cream-2); padding: 48px 36px; }
+    .step-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 76px; font-weight: 300; color: var(--green-light); line-height: 1; margin-bottom: 22px;
+    }
+    .step-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 8px;
+    }
+    .step-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 500; color: var(--green); margin-bottom: 12px;
+    }
+    .step-p { font-size: 15px; color: var(--muted); }
+
+    /* ─── OUTCOMES ─── */
+    .outcomes { background: var(--green); }
+    .outcomes .tag { color: var(--amber-2); }
+    .outcomes .h2 { color: var(--white); }
+    .outcomes .lead { color: rgba(255,255,255,.5); }
+    .outcome-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .outcome-card {
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 32px; transition: border-color .25s, background .25s;
+    }
+    .outcome-card:hover { border-color: var(--amber-2); background: rgba(255,255,255,.04); }
+    .outcome-icon { font-size: 30px; margin-bottom: 14px; display: block; }
+    .outcome-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; color: var(--white); line-height: 1.4;
+    }
+
+    /* ─── ABOUT ─── */
+    .about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 72px; align-items: start; }
+    .about-photo-wrap {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--green-light); position: relative; overflow: hidden;
+      border-bottom: 4px solid var(--amber);
+    }
+    .about-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-style: italic; color: var(--green);
+      border-left: 3px solid var(--amber); padding-left: 24px;
+      margin-bottom: 32px; line-height: 1.55;
+    }
+    .about-text { font-size: 16px; color: var(--muted); margin-bottom: 20px; line-height: 1.75; }
+    .creds {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;
+    }
+    .cred {
+      background: var(--cream-2); border: 1px solid var(--border);
+      font-size: 13px; color: var(--green); padding: 8px 14px;
+    }
+
+    /* ─── OBJECTIONS ─── */
+    .objections-wrap { border: 2px solid var(--border); }
+    .objection {
+      padding: 36px 44px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+      border-bottom: 1px solid var(--border); transition: background .2s;
+    }
+    .objection:last-child { border-bottom: none; }
+    .objection:hover { background: var(--cream); }
+    .obj-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 500; font-style: italic; color: var(--dark);
+    }
+    .obj-a { font-size: 15px; color: var(--muted); line-height: 1.72; }
+
+    /* ─── VS ─── */
+    .vs { background: var(--cream-2); }
+    .vs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .vs-card {
+      background: var(--white); padding: 36px;
+      border-top: 4px solid var(--border); transition: border-color .25s;
+    }
+    .vs-card:hover { border-top-color: var(--amber); }
+    .vs-card.featured { background: var(--green); border-top-color: var(--amber-2); }
+    .vs-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .vs-card.featured .vs-label { color: var(--amber-2); }
+    .vs-h { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: var(--dark); margin-bottom: 14px; }
+    .vs-card.featured .vs-h { color: var(--white); }
+    .vs-p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+    .vs-card.featured .vs-p { color: rgba(255,255,255,.6); }
+
+    /* ─── FORM ─── */
+    .form-section { background: var(--cream); }
+    .form-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .form-aside .h2 { margin-bottom: 18px; }
+    .form-aside p { color: var(--muted); font-size: 16px; line-height: 1.72; margin-bottom: 28px; }
+    .tg-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: var(--white);
+      font-size: 14px; font-weight: 600; padding: 14px 22px;
+      text-decoration: none; transition: background .22s;
+    }
+    .tg-link:hover { background: var(--green-mid); }
+
+    .form-box { background: var(--white); padding: 52px; border: 2px solid var(--border); }
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 400; color: var(--green); margin-bottom: 6px;
+    }
+    .form-sub { font-size: 15px; color: var(--muted); margin-bottom: 36px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 7px;
+    }
+    .form-input {
+      width: 100%; padding: 14px 18px;
+      font-family: 'Nunito', sans-serif; font-size: 16px;
+      border: 1.5px solid var(--border); background: var(--cream);
+      color: var(--dark); outline: none; transition: border-color .2s;
+    }
+    .form-input:focus { border-color: var(--green); }
+    .form-input::placeholder { color: #B0AA9F; }
+    .form-btn {
+      width: 100%; background: var(--green); color: var(--white);
+      font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 18px; border: none; cursor: pointer; margin-top: 6px;
+      transition: background .22s;
+    }
+    .form-btn:hover { background: var(--green-mid); }
+    .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 14px; }
+    .success-msg {
+      display: none; background: var(--green-light);
+      border: 2px solid var(--green); color: var(--green);
+      padding: 28px; text-align: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 24px;
+      line-height: 1.45; margin-top: 16px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark); padding: 48px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    footer p { font-size: 13px; color: rgba(255,255,255,.3); }
+    .footer-tg { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: none; }
+    .footer-tg:hover { color: var(--amber-2); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left > * { animation: fadeUp .65s ease both; }
+    .hero-eyebrow  { animation-delay: .08s; }
+    .hero-h1       { animation-delay: .2s; }
+    .hero-desc     { animation-delay: .32s; }
+    .btn-amber     { animation-delay: .44s; }
+    .hero-micro    { animation-delay: .52s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      section { padding: 64px 24px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 96px 32px 64px; }
+      .hero-right { height: 380px; }
+      .photo-banner { height: 320px; }
+      .photo-banner-overlay { padding: 0 32px; }
+      .benefits-grid, .steps-grid, .outcome-grid,
+      .vs-grid, .form-layout, .resonance-grid, .about-grid { grid-template-columns: 1fr; gap: 24px; }
+      .objection { grid-template-columns: 1fr; gap: 10px; }
+      .sticky-cta { position: static; }
+      .form-box { padding: 36px 26px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="nav-name">Светлана Жукова</span>
+      <span class="nav-sub">Профориентолог · Онлайн</span>
+    </a>
+    <a href="#quiz" class="nav-cta">Пройти квиз</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Профориентация для школьников 9–11 класса · Онлайн</p>
+      <h1 class="hero-h1">
+        Помогите ребёнку<br>найти своё дело —<br>
+        до того, как ЕГЭ<br><em>решит за вас</em>
+      </h1>
+      <p class="hero-desc">
+        Не тест из интернета — живой разговор со Светланой Жуковой,
+        <strong>кандидатом наук</strong> и профориентологом с
+        <strong>более чем 5 000 отзывами</strong>.
+        Ваш ребёнок поймёт куда поступать — за одну встречу.
+      </p>
+      <a href="#quiz" class="btn-amber">Пройти бесплатный квиз →</a>
+      <p class="hero-micro">5 минут · Бесплатно · Без обязательств</p>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-photo-full" src="images/photo-hero.jpg" alt="Светлана Жукова — профориентолог" />
+      <div class="hero-photo-overlay">
+        <div class="expert-name">Светлана Жукова</div>
+        <div class="expert-title">Профориентолог · Кандидат социологических наук</div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-n">5 015</span>
+            <div class="stat-l">отзывов</div>
+          </div>
+          <div class="stat">
+            <span class="stat-n">4+</span>
+            <div class="stat-l">года практики</div>
+          </div>
+          <div class="stat">
+            <span class="stat-n">32</span>
+            <div class="stat-l">научные работы</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AHA -->
+  <div class="aha">
+    <p class="tag">Начните отсюда</p>
+    <h2 class="h2">Пройдите бесплатный квиз —<br><em>5 минут о вашем ребёнке</em></h2>
+    <p class="aha-lead">Ответьте на 8 вопросов. Светлана получит первичное представление о ситуации и честно скажет, подойдёт ли консультация именно вам.</p>
+    <a href="#quiz" class="btn-amber">Начать квиз →</a>
+  </div>
+
+  <!-- BENEFITS -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <p class="tag">Что вы получите</p>
+      <h2 class="h2">Конкретный результат —<br><em>не список из 40 профессий</em></h2>
+      <p class="lead">После консультации у вас и ребёнка будет ясность. Не «подумаем», а конкретный план.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit">
+          <span class="benefit-bg-n">1</span>
+          <span class="benefit-icon">🎯</span>
+          <h3 class="benefit-h">Конкретный список профессий</h3>
+          <p class="benefit-p">Не «врач или юрист», а именно то, что подходит вашему ребёнку — исходя из его интересов, сильных сторон и характера.</p>
+        </div>
+        <div class="benefit">
+          <span class="benefit-bg-n">2</span>
+          <span class="benefit-icon">📋</span>
+          <h3 class="benefit-h">Чёткий план по ЕГЭ</h3>
+          <p class="benefit-p">Поймёте, какие предметы выбрать и почему — с обоснованием под конкретную цель. Без тревоги и угадайки.</p>
+        </div>
+        <div class="benefit">
+          <span class="benefit-bg-n">3</span>
+          <span class="benefit-icon">💡</span>
+          <h3 class="benefit-h">Ребёнок уйдёт с решением</h3>
+          <p class="benefit-p">Придёт закрытым, уйдёт с пониманием «вот куда я иду и зачем». Его собственное решение — не навязанное.</p>
+        </div>
+        <div class="benefit">
+          <span class="benefit-bg-n">4</span>
+          <span class="benefit-icon">🗺️</span>
+          <h3 class="benefit-h">Несколько вариантов, а не один</h3>
+          <p class="benefit-p">Несколько направлений и вузов — готовая дорожная карта, к которой можно возвращаться.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESONANCE -->
+  <section class="resonance">
+    <div class="container">
+      <div class="resonance-grid">
+        <div>
+          <p class="tag">Узнаёте себя?</p>
+          <h2 class="h2">Хотите, чтобы ребёнок<br><em>уверенно выбрал путь</em></h2>
+          <ul class="resonance-list" style="margin-top: 36px;">
+            <li>Ребёнок говорит «не знаю кем хочу быть» — и так каждый раз</li>
+            <li>Скоро выбирать предметы ЕГЭ, а ничего не решено</li>
+            <li>Смотрите на чужих детей, у которых «всё понятно», и тревожитесь</li>
+            <li>Беспокоитесь: потратите деньги на вуз — а ребёнок бросит после первого курса</li>
+            <li>Пытались поговорить сами — но разговор не получается</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sticky-cta">
+            <img src="images/photo-about.jpg" alt="Светлана Жукова" style="width:100%; height:220px; object-fit:cover; object-position:center 20%; display:block; margin-bottom:0;" />
+            <div style="padding: 36px 40px 44px;">
+              <h3 class="h2">Начните с квиза —<br><em>это бесплатно</em></h3>
+              <p class="sticky-cta-lead">5 минут, 8 вопросов о вашем ребёнке. Первый шаг к ясности.</p>
+              <a href="#quiz" class="btn-white">Пройти квиз →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <p class="tag">Как проходит работа</p>
+      <h2 class="h2">Три шага<br><em>от тревоги к ясности</em></h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-n">01</div>
+          <p class="step-tag">Бесплатно · 5 минут</p>
+          <h3 class="step-h">Квиз</h3>
+          <p class="step-p">Отвечаете на 8 вопросов о ребёнке — его интересах, ситуации, что уже пробовали. Светлана приходит на встречу подготовленной.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <p class="step-tag">Онлайн · 60–90 минут</p>
+          <h3 class="step-h">Консультация</h3>
+          <p class="step-p">Встреча с ребёнком. Разбираем склонности, интересы, мотивацию. Светлана умеет разговорить даже самых закрытых подростков — к середине они сами не хотят заканчивать.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <p class="step-tag">На руках · Конкретно</p>
+          <h3 class="step-h">Результат</h3>
+          <p class="step-p">Ребёнок уходит с пониманием: вот мои сильные стороны, вот профессии которые мне подходят, вот куда поступать. Несколько вариантов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BANNER -->
+  <div class="photo-banner">
+    <img src="images/photo-action.jpg" alt="Светлана Жукова" />
+    <div class="photo-banner-overlay">
+      <div class="photo-banner-text">
+        <p class="tag">Живой разговор, не тест</p>
+        <h2 class="h2">Я нашла своё призвание<br>в 50 лет — <em>и знаю,<br>как это сделать</em></h2>
+        <p>До профориентации — 13 лет в науке, Министерство занятости, корпоративный HR. Собственный опыт поиска себя делает каждую консультацию настоящей.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTCOMES -->
+  <section class="outcomes">
+    <div class="container">
+      <p class="tag">К чему вы придёте</p>
+      <h2 class="h2">После консультации</h2>
+      <p class="lead">Что изменится для вас и для ребёнка.</p>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <span class="outcome-icon">😮‍💨</span>
+          <p class="outcome-text">Вы почувствуете облегчение — важное решение принято осознанно, а не наугад</p>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-icon">🧭</span>
+          <p class="outcome-text">Ребёнок скажет «я знаю куда иду» — и это будет его собственное решение</p>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-icon">🏠</span>
+          <p class="outcome-text">Разговоры о выборе профессии перестанут быть источником тревоги в семье</p>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-icon">🚀</span>
+          <p class="outcome-text">Ваш ребёнок получит уверенный старт во взрослой жизни — именно то, чего вы хотите для него</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="about-photo-wrap">
+            <img src="images/photo-work.jpg" alt="Светлана Жукова за работой" />
+          </div>
+        </div>
+        <div>
+          <p class="tag">О Светлане</p>
+          <h2 class="h2">Светлана Жукова</h2>
+          <div class="about-quote">
+            «Я знаю как сложно найти любимое дело. Смогла найти своё призвание только в 50 лет — и теперь помогаю другим не тратить годы на поиск того, что можно найти за одну встречу.»
+          </div>
+          <p class="about-text">
+            Профориентолог, преподаватель, наставник. Кандидат социологических наук. На Профи.ру с 2021 года — <strong>более 5 000 отзывов</strong>, один из самых опытных специалистов в своей нише.
+          </p>
+          <p class="about-text">
+            До профориентации — 13 лет ведущим научным сотрудником в ВНИИ труда Минтруда России, работа в Министерстве занятости Саратовской области, преподавание в вузе, HR. Соавтор 32 научно-исследовательских работ по психологии и управлению персоналом.
+          </p>
+          <p class="about-text">
+            Прошла специализированную подготовку по профориентации подростков в Академии WhoAmI. Работает онлайн — по всей России.
+          </p>
+          <div class="creds">
+            <span class="cred">Кандидат социологических наук</span>
+            <span class="cred">Профориентолог (2024)</span>
+            <span class="cred">Психолог</span>
+            <span class="cred">32 научные работы</span>
+            <span class="cred">5 015 отзывов</span>
+            <span class="cred">Академия WhoAmI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIONS -->
+  <section style="background: var(--cream-2);">
+    <div class="container">
+      <p class="tag">Частые вопросы</p>
+      <h2 class="h2" style="margin-bottom: 44px;">Сомнения,<br><em>которые у вас могут быть</em></h2>
+      <div class="objections-wrap">
+        <div class="objection">
+          <p class="obj-q">«Ребёнок не захочет разговаривать с незнакомым человеком»</p>
+          <p class="obj-a">Это нормально — так почти у всех. Светлана работает с подростками много лет и умеет разговорить даже самых закрытых. Первые минуты уходят на то, чтобы ребёнок расслабился. К середине встречи они сами не хотят заканчивать.</p>
+        </div>
+        <div class="objection">
+          <p class="obj-q">«Мы уже проходили тесты — результат был бесполезным»</p>
+          <p class="obj-a">Тесты дают направление, а не ответ. Светлана работает с живым разговором — именно поэтому результат конкретный, а не список из 40 профессий без объяснений.</p>
+        </div>
+        <div class="objection">
+          <p class="obj-q">«Не знаем, подойдёт ли это именно нашему ребёнку»</p>
+          <p class="obj-a">Для этого и нужен квиз — он бесплатный. Пройдите его, и Светлана честно скажет, подойдёт ли консультация вашей ситуации.</p>
+        </div>
+        <div class="objection">
+          <p class="obj-q">«Это дорого»</p>
+          <p class="obj-a">Консультация стоит 2 950 рублей. Это дешевле одного месяца обучения на ненужной специальности. Дешевле года сомнений. Одна встреча — конкретный результат.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VS -->
+  <section class="vs">
+    <div class="container">
+      <p class="tag">Почему не агрегатор</p>
+      <h2 class="h2" style="margin-bottom: 44px;">Чем отличается<br><em>личный специалист</em></h2>
+      <div class="vs-grid">
+        <div class="vs-card">
+          <p class="vs-label">Профи.ру и агрегаторы</p>
+          <h3 class="vs-h">Много выбора, мало понимания</h3>
+          <p class="vs-p">50 специалистов без возможности понять, кто из них реально работает с подростками. Выбираете по рейтингу и фотографии. Плюс комиссия с вас.</p>
+        </div>
+        <div class="vs-card">
+          <p class="vs-label">Онлайн-тесты</p>
+          <h3 class="vs-h">Список профессий без контекста</h3>
+          <p class="vs-p">Дают 20–40 профессий без объяснения почему именно они. Ребёнок остаётся с тем же вопросом — только теперь с распечаткой в руках.</p>
+        </div>
+        <div class="vs-card featured">
+          <p class="vs-label">Светлана Жукова</p>
+          <h3 class="vs-h">Один человек. Конкретный результат.</h3>
+          <p class="vs-p">Видите кто работает с вашим ребёнком — её историю, статьи, 5 000+ отзывов. Квиз даёт Светлане контекст ещё до встречи. Напрямую, без посредников.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + QUIZ -->
+  <section class="form-section" id="quiz">
+    <div class="container">
+      <div class="form-layout">
+        <div class="form-aside">
+          <p class="tag">Следующий шаг</p>
+          <h2 class="h2">Начните с квиза —<br><em>5 минут о вашем ребёнке</em></h2>
+          <p>Ответьте на 8 вопросов. Светлана получит первичное представление о ситуации и честно скажет, подойдёт ли консультация именно вам. Бесплатно, без обязательств.</p>
+          <a href="#" class="btn-amber" style="margin-bottom: 32px;">Пройти квиз →</a>
+          <p style="font-size: 14px; margin-bottom: 16px;">Не готовы к квизу? Просто оставьте контакт ниже — Светлана напишет сама.</p>
+          <a href="https://t.me/rabotaizhizn24" target="_blank" class="tg-link">
+            📢 Telegram-канал Светланы
+          </a>
+        </div>
+
+        <div class="form-box">
+          <h3 class="form-title">Оставить заявку</h3>
+          <p class="form-sub">Светлана свяжется с вами в течение дня.</p>
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="name">Ваше имя</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Елена" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact">Телефон или мессенджер</label>
+              <input class="form-input" type="text" id="contact" name="contact" placeholder="+7 900 000-00-00 или @username" required />
+            </div>
+            <button type="submit" class="form-btn">Отправить заявку</button>
+            <p class="form-note">Не звоним без предупреждения · 2 950 руб./консультация</p>
+          </form>
+          <div class="success-msg" id="successMsg">
+            Спасибо! Светлана свяжется с вами в ближайшее время. 🌿
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 · Светлана Жукова · Профориентолог · Онлайн по всей России</p>
+    <a href="https://t.me/rabotaizhizn24" target="_blank" class="footer-tg">Telegram @rabotaizhizn24</a>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const payload = {
+        name:    document.getElementById('name').value,
+        contact: document.getElementById('contact').value,
+        page:    'parents-landing',
+        time:    new Date().toLocaleString('ru-RU')
+      };
+      // В MVP: fetch('/api/submit', { method:'POST', body: JSON.stringify(payload) })
+      console.log('Заявка:', payload);
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMsg').style.display  = 'block';
+    }
+
+    // Появление при скролле
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.style.opacity   = '1';
+          el.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(
+      '.benefit, .step, .outcome-card, .objection, .vs-card, .cred'
+    ).forEach((el, i) => {
+      el.style.opacity         = '0';
+      el.style.transform       = 'translateY(22px)';
+      el.style.transition      = `opacity .5s ${i * 0.06}s ease, transform .5s ${i * 0.06}s ease`;
+      io.observe(el);
+    });
+  </script>
+</body>
+</html>
