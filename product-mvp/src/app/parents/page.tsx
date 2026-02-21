@@ -27,9 +27,9 @@ export default function ParentsPage() {
         paddingTop: 64,
       }} className="hero-grid">
         {/* Left: green */}
-        <div style={{
+        <div className="hero-left" style={{
           background: "var(--green)",
-          padding: "88px 72px 80px",
+          padding: "88px 52px 80px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -73,7 +73,7 @@ export default function ParentsPage() {
         </div>
 
         {/* Right: full-bleed photo */}
-        <div style={{ position: "relative", overflow: "hidden" }}>
+        <div className="hero-image" style={{ position: "relative", overflow: "hidden" }}>
           <Image
             src="/images/photo-hero.jpg"
             alt="Светлана Жукова — профориентолог"
@@ -81,7 +81,7 @@ export default function ParentsPage() {
             style={{ objectFit: "cover", objectPosition: "center top" }}
             priority
           />
-          <div style={{
+          <div className="hero-overlay" style={{
             position: "absolute", bottom: 0, left: 0, right: 0,
             background: "linear-gradient(to top, rgba(30,61,47,.92) 0%, rgba(30,61,47,.5) 60%, transparent 100%)",
             padding: "40px 44px 36px",
@@ -92,7 +92,7 @@ export default function ParentsPage() {
             <div style={{ fontSize: 13, color: "rgba(255,255,255,.65)", marginTop: 4, letterSpacing: "0.04em" }}>
               Профориентолог · Кандидат социологических наук
             </div>
-            <div style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.2)" }}>
+            <div className="hero-stats" style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.2)" }}>
               {[
                 { n: "5 015", l: "отзывов" },
                 { n: "4+", l: "года практики" },
@@ -109,7 +109,7 @@ export default function ParentsPage() {
       </div>
 
       {/* ── AHA strip ── */}
-      <div style={{ background: "var(--amber-pale)", textAlign: "center", padding: "72px 52px", borderTop: "3px solid var(--amber)", borderBottom: "3px solid var(--amber)" }}>
+      <div className="aha-strip" style={{ background: "var(--amber-pale)", textAlign: "center", padding: "72px 52px", borderTop: "3px solid var(--amber)", borderBottom: "3px solid var(--amber)" }}>
         <p className="tag" style={{ color: "var(--amber)" }}>Начните отсюда</p>
         <h2 className="h2" style={{ maxWidth: 680, margin: "0 auto 16px" }}>
           Пройдите бесплатный квиз —<br /><em>5 минут о вашем ребёнке</em>
@@ -121,7 +121,7 @@ export default function ParentsPage() {
       </div>
 
       {/* ── BENEFITS ── */}
-      <section style={{ ...S.section, background: "var(--white)" }}>
+      <section className="section-pad" style={{ ...S.section, background: "var(--white)" }}>
         <div style={S.container}>
           <p className="tag">Что вы получите</p>
           <h2 className="h2">Конкретный результат —<br /><em>не список из 40 профессий</em></h2>
@@ -147,7 +147,7 @@ export default function ParentsPage() {
       </section>
 
       {/* ── RESONANCE ── */}
-      <section style={{ ...S.section, background: "var(--cream-2)" }}>
+      <section className="section-pad" style={{ ...S.section, background: "var(--cream-2)" }}>
         <div style={S.container}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }} className="resonance-grid">
             <div>
@@ -188,7 +188,7 @@ export default function ParentsPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section style={S.section}>
+      <section className="section-pad" style={S.section}>
         <div style={S.container}>
           <p className="tag">Как проходит работа</p>
           <h2 className="h2">Три шага<br /><em>от тревоги к ясности</em></h2>
@@ -210,17 +210,17 @@ export default function ParentsPage() {
       </section>
 
       {/* ── PHOTO BANNER ── */}
-      <div style={{ position: "relative", height: 480, overflow: "hidden" }}>
+      <div className="photo-banner" style={{ position: "relative", height: 480, overflow: "hidden" }}>
         <Image
           src="/images/photo-action.jpg"
           alt="Светлана Жукова"
           fill
           style={{ objectFit: "cover", objectPosition: "center 25%" }}
         />
-        <div style={{
+        <div className="photo-banner-overlay" style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to right, rgba(30,61,47,.82) 0%, rgba(30,61,47,.3) 55%, transparent 100%)",
-          display: "flex", alignItems: "center", padding: "0 72px",
+          display: "flex", alignItems: "center", padding: "0 52px",
         }}>
           <div style={{ maxWidth: 480 }}>
             <p className="tag" style={{ color: "var(--amber-2)" }}>Живой разговор, не тест</p>
@@ -235,7 +235,7 @@ export default function ParentsPage() {
       </div>
 
       {/* ── OUTCOMES ── */}
-      <section style={{ ...S.section, background: "var(--green)" }}>
+      <section className="section-pad" style={{ ...S.section, background: "var(--green)" }}>
         <div style={S.container}>
           <p className="tag" style={{ color: "var(--amber-2)" }}>К чему вы придёте</p>
           <h2 className="h2" style={{ color: "var(--white)" }}>После консультации</h2>
@@ -259,7 +259,7 @@ export default function ParentsPage() {
       </section>
 
       {/* ── ABOUT ── */}
-      <section style={{ ...S.section, background: "var(--white)" }}>
+      <section className="section-pad" style={{ ...S.section, background: "var(--white)" }}>
         <div style={S.container}>
           <div style={{ display: "grid", gridTemplateColumns: "340px 1fr", gap: 72, alignItems: "start" }} className="about-grid">
             <div>
@@ -303,7 +303,7 @@ export default function ParentsPage() {
       </section>
 
       {/* ── OBJECTIONS ── */}
-      <section style={{ ...S.section, background: "var(--cream-2)" }}>
+      <section className="section-pad" style={{ ...S.section, background: "var(--cream-2)" }}>
         <div style={S.container}>
           <p className="tag">Частые вопросы</p>
           <h2 className="h2" style={{ marginBottom: 44 }}>Сомнения,<br /><em>которые у вас могут быть</em></h2>
@@ -324,7 +324,7 @@ export default function ParentsPage() {
       </section>
 
       {/* ── VS ── */}
-      <section style={{ ...S.section, background: "var(--cream-2)" }}>
+      <section className="section-pad" style={{ ...S.section, background: "var(--cream-2)" }}>
         <div style={S.container}>
           <p className="tag">Почему не агрегатор</p>
           <h2 className="h2" style={{ marginBottom: 44 }}>Чем отличается<br /><em>личный специалист</em></h2>
@@ -349,7 +349,7 @@ export default function ParentsPage() {
       </section>
 
       {/* ── FORM ── */}
-      <section style={{ ...S.section, background: "var(--cream)" }} id="quiz">
+      <section className="section-pad" style={{ ...S.section, background: "var(--cream)" }} id="quiz">
         <div style={S.container}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }} className="form-grid">
             <div>
@@ -389,13 +389,6 @@ export default function ParentsPage() {
       </section>
 
       <Footer />
-
-      <style>{`
-        @media (max-width: 960px) {
-          .hero-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
-          .resonance-grid, .about-grid, .form-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-        }
-      `}</style>
     </div>
   );
 }

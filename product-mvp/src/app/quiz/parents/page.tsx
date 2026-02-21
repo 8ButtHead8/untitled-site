@@ -73,7 +73,7 @@ export default function QuizParentsPage() {
     <div style={{ background: "var(--cream)", minHeight: "100vh" }}>
       <Navigation />
       <div style={{ paddingTop: 64 }}>
-        <div style={{ maxWidth: 720, margin: "0 auto", padding: "72px 32px 96px" }}>
+        <div className="quiz-content" style={{ maxWidth: 720, margin: "0 auto", padding: "72px 32px 96px" }}>
 
           {isIntro && (
             <div style={{ textAlign: "center" }}>
@@ -162,7 +162,7 @@ export default function QuizParentsPage() {
                 <p style={{ fontSize: 16, color: "var(--dark)", fontStyle: "italic", lineHeight: 1.65 }}>{result.tip}</p>
               </div>
 
-              <div style={{ background: "var(--green)", padding: "52px" }}>
+              <div className="quiz-result-form" style={{ background: "var(--green)", padding: "52px" }}>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 400, color: "var(--white)", marginBottom: 8 }}>
                   Оставьте контакт
                 </h3>

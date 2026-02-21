@@ -34,12 +34,12 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article style={{ paddingTop: 64 }}>
         {/* Header */}
-        <div style={{ background: "var(--green)", padding: "72px 52px 64px" }}>
+        <div className="blog-post-header" style={{ background: "var(--green)", padding: "72px 52px 64px" }}>
           <div style={{ maxWidth: 800, margin: "0 auto" }}>
             <Link href="/blog" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", textDecoration: "none", letterSpacing: "0.05em", display: "inline-block", marginBottom: 32 }}>
               ← Все статьи
             </Link>
-            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24, flexWrap: "wrap" as const }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "var(--amber-2)", background: "rgba(255,255,255,0.1)", padding: "4px 12px" }}>
                 {post.category}
               </span>
@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Author */}
-        <div style={{ maxWidth: 800, margin: "0 auto", padding: "32px 52px 0" }}>
+        <div className="blog-post-author" style={{ maxWidth: 800, margin: "0 auto", padding: "32px 52px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16, paddingBottom: 32, borderBottom: "1px solid var(--border)" }}>
             <div style={{
               width: 48, height: 48,
@@ -74,14 +74,14 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Content */}
-        <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 52px" }}>
+        <div className="blog-post-content" style={{ maxWidth: 800, margin: "0 auto", padding: "48px 52px" }}>
           <div className="prose-custom" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
       </article>
 
       {/* CTA */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 52px 96px" }}>
-        <div style={{ background: "var(--green)", padding: 52 }}>
+      <div className="blog-post-cta-wrap" style={{ maxWidth: 800, margin: "0 auto", padding: "0 52px 96px" }}>
+        <div className="blog-post-cta" style={{ background: "var(--green)", padding: 52 }}>
           <p className="tag" style={{ color: "var(--amber-2)" }}>Следующий шаг</p>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 400, color: "var(--white)", marginBottom: 12, lineHeight: 1.2 }}>
             Хотите разобраться в своей ситуации?

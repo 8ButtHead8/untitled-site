@@ -17,7 +17,7 @@ export default function BlogPage() {
 
       <div style={{ paddingTop: 64 }}>
         {/* Header */}
-        <div style={{ background: "var(--green)", padding: "88px 52px 72px" }}>
+        <div className="blog-header" style={{ background: "var(--green)", padding: "88px 52px 72px" }}>
           <div style={{ maxWidth: 1080, margin: "0 auto" }}>
             <p className="tag" style={{ color: "var(--amber-2)" }}>Блог</p>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 4vw, 58px)", fontWeight: 400, lineHeight: 1.12, color: "var(--white)", marginBottom: 16 }}>
@@ -30,7 +30,7 @@ export default function BlogPage() {
         </div>
 
         {/* Posts */}
-        <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 52px 96px" }}>
+        <div className="blog-posts-wrap" style={{ maxWidth: 1080, margin: "0 auto", padding: "0 52px 96px" }}>
           {posts.length === 0 ? (
             <p style={{ fontSize: 17, color: "var(--muted)", padding: "48px 0" }}>Статьи скоро появятся.</p>
           ) : (
@@ -40,7 +40,7 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 style={{ display: "block", textDecoration: "none" }}
               >
-                <div style={{
+                <div className="blog-post-item" style={{
                   padding: "44px 0",
                   borderBottom: "1px solid var(--border)",
                   display: "grid",
@@ -78,7 +78,7 @@ export default function BlogPage() {
                     </h2>
                     <p style={{ fontSize: 16, color: "var(--muted)", lineHeight: 1.65 }}>{post.excerpt}</p>
                   </div>
-                  <div style={{ textAlign: "right", paddingTop: 4 }}>
+                  <div className="blog-post-item-date" style={{ textAlign: "right", paddingTop: 4 }}>
                     <p style={{ fontSize: 13, color: "var(--muted)" }}>
                       {new Date(post.date).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" })}
                     </p>

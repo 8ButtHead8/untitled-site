@@ -326,12 +326,94 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Navigation mobile */
+.nav-mobile-toggle { display: none; }
+
 /* Responsive */
 @media (max-width: 960px) {
+  /* Grids → single column */
   .benefits-grid { grid-template-columns: 1fr; }
   .steps-grid { grid-template-columns: 1fr; }
   .outcome-grid { grid-template-columns: 1fr; }
   .vs-grid { grid-template-columns: 1fr; }
+  .hero-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .resonance-grid, .about-grid, .form-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Cards */
+  .benefit { padding: 36px 28px; }
+  .step { padding: 36px 28px; }
+  .vs-card { padding: 28px; }
+  .outcome-card { padding: 24px; }
   .objection { grid-template-columns: 1fr; gap: 10px; padding: 28px 24px; }
   .form-box { padding: 32px 24px; }
+  .resonance-list li { padding: 14px 16px; }
+
+  /* Navigation */
+  .nav-bar { padding: 14px 20px !important; }
+  .nav-desktop { display: none !important; }
+  .nav-mobile-toggle { display: flex !important; }
+
+  /* Sections */
+  .section-pad { padding: 56px 20px !important; }
+
+  /* Hero */
+  .hero-left { padding: 56px 24px 48px !important; }
+  .hero-overlay { padding: 28px 20px 24px !important; }
+  .hero-stats { gap: 16px !important; }
+  .hero-image { min-height: 320px; }
+
+  /* AHA strip */
+  .aha-strip { padding: 48px 20px !important; }
+
+  /* Photo banner */
+  .photo-banner { height: 400px !important; }
+  .photo-banner-overlay { padding: 0 20px !important; }
+
+  /* Blog */
+  .blog-header { padding: 56px 20px 48px !important; }
+  .blog-posts-wrap { padding: 0 20px 56px !important; }
+  .blog-post-item { grid-template-columns: 1fr !important; gap: 8px !important; }
+  .blog-post-item-date { text-align: left !important; padding-top: 0 !important; }
+  .blog-post-header { padding: 48px 20px 40px !important; }
+  .blog-post-author { padding: 24px 20px 0 !important; }
+  .blog-post-content { padding: 36px 20px !important; }
+  .blog-post-cta-wrap { padding: 0 20px 56px !important; }
+  .blog-post-cta { padding: 36px 24px !important; }
+
+  /* Quiz */
+  .quiz-content { padding: 48px 20px 56px !important; }
+  .quiz-result-form { padding: 36px 20px !important; }
+
+  /* Footer */
+  .footer-bar { padding: 36px 20px !important; flex-direction: column !important; text-align: center !important; }
+}
+
+@media (max-width: 600px) {
+  .section-pad { padding: 44px 16px !important; }
+  .hero-left { padding: 44px 20px 40px !important; }
+  .hero-overlay { padding: 24px 16px 20px !important; }
+  .aha-strip { padding: 40px 16px !important; }
+  .photo-banner { height: 340px !important; }
+  .photo-banner-overlay { padding: 0 16px !important; }
+  .nav-bar { padding: 12px 16px !important; }
+  .footer-bar { padding: 32px 16px !important; }
+
+  .benefit { padding: 28px 20px; }
+  .step { padding: 28px 20px; }
+  .vs-card { padding: 24px 20px; }
+  .objection { padding: 24px 16px; }
+  .form-box { padding: 24px 16px; }
+  .outcome-card { padding: 20px 16px; }
+  .resonance-list li { padding: 12px 14px; }
+  .steps-grid { margin-top: 32px; }
+
+  .blog-header { padding: 44px 16px 36px !important; }
+  .blog-posts-wrap { padding: 0 16px 44px !important; }
+  .blog-post-header { padding: 40px 16px 32px !important; }
+  .blog-post-author { padding: 20px 16px 0 !important; }
+  .blog-post-content { padding: 28px 16px !important; }
+  .blog-post-cta-wrap { padding: 0 16px 44px !important; }
+  .blog-post-cta { padding: 28px 16px !important; }
+  .quiz-content { padding: 36px 16px 44px !important; }
+  .quiz-result-form { padding: 28px 16px !important; }
 }
