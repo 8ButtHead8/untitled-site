@@ -6,9 +6,11 @@ interface ContactFormProps {
   source: "parents" | "adults" | "blog";
   quizAnswers?: Record<string, string>;
   dark?: boolean;
+  buttonText?: string;
+  privacyText?: string;
 }
 
-export default function ContactForm({ source, quizAnswers, dark }: ContactFormProps) {
+export default function ContactForm({ source, quizAnswers, dark, buttonText, privacyText }: ContactFormProps) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [loading, setLoading] = useState(false);
@@ -94,10 +96,10 @@ export default function ContactForm({ source, quizAnswers, dark }: ContactFormPr
         disabled={loading}
         className="form-btn"
       >
-        {loading ? "Отправляем..." : "Отправить заявку"}
+        {loading ? "Отправляем..." : (buttonText || "Отправить заявку")}
       </button>
       <p style={{ fontSize: 12, color: dark ? "rgba(255,255,255,0.3)" : "var(--muted)", textAlign: "center", marginTop: 14 }}>
-        Не звоним без предупреждения · 2 950 руб./консультация
+        {privacyText || "Не звоним без предупреждения · 2 950 руб./консультация"}
       </p>
     </form>
   );
