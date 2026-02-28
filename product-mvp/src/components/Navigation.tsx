@@ -18,42 +18,29 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="nav-bar" style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-        padding: "16px 52px",
-        background: "rgba(253,248,241,0.92)",
-        backdropFilter: "blur(14px)",
-        borderBottom: "1px solid var(--border)",
-      }}>
-        <div style={{
-          maxWidth: 1080,
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}>
-          <Link href="/parents" style={{ display: "flex", flexDirection: "column", gap: 1, textDecoration: "none" }}>
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, fontWeight: 500, color: "var(--green)", letterSpacing: "0.01em" }}>
+      <nav className="nav-bar fixed top-0 left-0 right-0 z-[200] px-[52px] py-4 bg-cream/92 backdrop-blur-[14px] border-b border-border">
+        <div className="max-w-[1080px] mx-auto flex items-center justify-between">
+          <Link href="/parents" className="flex flex-col gap-px no-underline">
+            <span className="font-[family-name:var(--font-cormorant),'Cormorant_Garamond',serif] text-[19px] font-medium text-green tracking-[0.01em]">
               Светлана Жукова
             </span>
-            <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.06em" }}>
+            <span className="text-[11px] text-muted tracking-[0.06em]">
               Профориентолог · Онлайн
             </span>
           </Link>
 
           {/* Desktop */}
-          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <div style={{ display: "flex", gap: 28 }}>
+          <div className="nav-desktop flex items-center gap-8">
+            <div className="flex gap-7">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  style={{
-                    fontSize: 14,
-                    fontWeight: pathname.startsWith(l.href) ? 600 : 400,
-                    color: pathname.startsWith(l.href) ? "var(--amber)" : "var(--muted)",
-                    textDecoration: "none",
-                  }}
+                  className={`text-sm no-underline ${
+                    pathname.startsWith(l.href)
+                      ? "font-semibold text-amber"
+                      : "font-normal text-muted"
+                  }`}
                 >
                   {l.label}
                 </Link>
@@ -61,11 +48,7 @@ export default function Navigation() {
             </div>
             <Link
               href={quizHref}
-              style={{
-                background: "var(--green)", color: "var(--white)",
-                fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" as const,
-                padding: "11px 26px", textDecoration: "none",
-              }}
+              className="bg-green text-white text-[13px] font-bold tracking-[0.06em] uppercase py-[11px] px-[26px] no-underline"
             >
               Пройти квиз
             </Link>
@@ -73,20 +56,8 @@ export default function Navigation() {
 
           {/* Mobile toggle */}
           <button
-            className="nav-mobile-toggle"
+            className="nav-mobile-toggle items-center justify-center w-10 h-10 bg-transparent border-none cursor-pointer text-2xl text-green"
             onClick={() => setOpen(!open)}
-            style={{
-              display: "none",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 40,
-              height: 40,
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: 24,
-              color: "var(--green)",
-            }}
             aria-label="Меню"
           >
             {open ? "\u2715" : "\u2630"}
@@ -96,33 +67,17 @@ export default function Navigation() {
 
       {/* Mobile menu */}
       {open && (
-        <div style={{
-          position: "fixed",
-          top: 56,
-          left: 0,
-          right: 0,
-          zIndex: 199,
-          background: "rgba(253,248,241,0.98)",
-          backdropFilter: "blur(14px)",
-          borderBottom: "1px solid var(--border)",
-          padding: "16px 20px 20px",
-          display: "flex",
-          flexDirection: "column",
-          gap: 0,
-        }}>
+        <div className="fixed top-14 left-0 right-0 z-[199] bg-cream/[0.98] backdrop-blur-[14px] border-b border-border px-5 pt-4 pb-5 flex flex-col">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              style={{
-                fontSize: 16,
-                fontWeight: pathname.startsWith(l.href) ? 600 : 400,
-                color: pathname.startsWith(l.href) ? "var(--amber)" : "var(--dark)",
-                textDecoration: "none",
-                padding: "14px 0",
-                borderBottom: "1px solid var(--border)",
-              }}
+              className={`text-base no-underline py-3.5 border-b border-border ${
+                pathname.startsWith(l.href)
+                  ? "font-semibold text-amber"
+                  : "font-normal text-dark"
+              }`}
             >
               {l.label}
             </Link>
@@ -130,8 +85,7 @@ export default function Navigation() {
           <Link
             href={quizHref}
             onClick={() => setOpen(false)}
-            className="btn-amber"
-            style={{ textAlign: "center", marginTop: 16 }}
+            className="btn-amber text-center mt-4"
           >
             Пройти квиз →
           </Link>

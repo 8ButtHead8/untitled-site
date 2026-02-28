@@ -1,28 +1,19 @@
+import { TELEGRAM_URL, TELEGRAM_HANDLE } from "@/data/constants";
+
 export default function Footer() {
   return (
-    <footer className="footer-bar" style={{
-      background: "var(--dark)",
-      padding: "56px 52px",
-    }}>
-      <div style={{
-        maxWidth: 1080,
-        margin: "0 auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexWrap: "wrap" as const,
-        gap: 16,
-      }}>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
+    <footer className="footer-bar bg-dark px-[52px] py-14">
+      <div className="max-w-[1080px] mx-auto flex items-center justify-between flex-wrap gap-4">
+        <p className="text-[13px] text-white/30">
           © 2026 · Светлана Жукова · Профориентолог · Онлайн по всей России
         </p>
         <a
-          href="https://t.me/rabotaizhizn24"
+          href={TELEGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", textDecoration: "none" }}
+          className="text-[13px] text-white/40 no-underline"
         >
-          Telegram @rabotaizhizn24
+          Telegram {TELEGRAM_HANDLE}
         </a>
       </div>
     </footer>

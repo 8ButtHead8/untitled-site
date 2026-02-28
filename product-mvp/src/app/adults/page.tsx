@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import { TELEGRAM_URL } from "@/data/constants";
 
 export const metadata = {
   title: "Профориентация для взрослых — Светлана Жукова",
@@ -342,7 +343,7 @@ export default function AdultsPage() {
               </Link>
               <p style={{ fontSize: 14, marginBottom: 16 }}>Не готовы к квизу? Просто оставьте контакт — Светлана напишет сама.</p>
               <a
-                href="https://t.me/rabotaizhizn24"
+                href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

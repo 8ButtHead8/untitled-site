@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --color-cream:       #FDF8F1;
+  --color-cream-2:     #F5EEE3;
+  --color-cream-3:     #EDE4D5;
+  --color-green:       #1E3D2F;
+  --color-green-mid:   #2E5C44;
+  --color-green-light: #E6EFE9;
+  --color-amber:       #B8731A;
+  --color-amber-2:     #E09830;
+  --color-amber-pale:  #FBF0DC;
+  --color-dark:        #1A1A18;
+  --color-muted:       #6A6860;
+  --color-border:      #D8D0C0;
+
+}
+
 :root {
   --cream:       #FDF8F1;
   --cream-2:     #F5EEE3;
@@ -33,57 +49,28 @@ body {
 .font-display { font-family: var(--font-cormorant), 'Cormorant Garamond', serif; }
 
 .tag {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 14px;
-  display: block;
+  @apply text-[11px] font-bold tracking-[0.16em] uppercase text-amber mb-3.5 block;
 }
 
 .h2 {
+  @apply font-normal leading-[1.18] text-green mb-[18px];
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
   font-size: clamp(30px, 3.4vw, 48px);
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--green);
-  margin-bottom: 18px;
 }
 .h2 em { font-style: italic; }
 
 .btn-amber {
-  display: inline-block;
-  background: var(--amber);
-  color: var(--white);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 18px 40px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.22s, transform 0.18s;
-  align-self: flex-start;
+  @apply inline-block bg-amber text-white text-sm font-bold tracking-[0.07em] uppercase
+         py-[18px] px-10 border-none cursor-pointer no-underline self-start
+         transition-all duration-200 hover:-translate-y-0.5;
 }
-.btn-amber:hover { background: #9A5E10; transform: translateY(-2px); }
+.btn-amber:hover { background: #9A5E10; }
 
 .btn-white {
-  display: block;
-  width: 100%;
-  text-align: center;
-  background: var(--white);
-  color: var(--green);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 18px;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  @apply block w-full text-center bg-white text-green text-sm font-bold
+         tracking-[0.07em] uppercase py-[18px] no-underline
+         transition-colors duration-200 hover:bg-amber-pale;
 }
-.btn-white:hover { background: var(--amber-pale); }
 
 /* Benefits */
 .benefits-grid {

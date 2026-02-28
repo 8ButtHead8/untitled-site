@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CONSULTATION_PRICE_TEXT } from "@/data/constants";
 
 interface ContactFormProps {
   source: "parents" | "adults" | "blog";
@@ -39,36 +40,25 @@ export default function ContactForm({ source, quizAnswers, dark, buttonText, pri
 
   if (success) {
     return (
-      <div style={{
-        background: dark ? "rgba(255,255,255,0.08)" : "var(--green-light)",
-        border: dark ? "1px solid rgba(255,255,255,0.2)" : "2px solid var(--green)",
-        color: dark ? "var(--white)" : "var(--green)",
-        padding: "28px",
-        textAlign: "center",
-        fontFamily: "'Cormorant Garamond', serif",
-        fontSize: 24,
-        lineHeight: 1.45,
-      }}>
-        Спасибо! Светлана свяжется с вами в ближайшее время. 🌿
+      <div className={`p-7 text-center font-[family-name:var(--font-cormorant),'Cormorant_Garamond',serif] text-2xl leading-[1.45] ${
+        dark
+          ? "bg-white/[0.08] border border-white/20 text-white"
+          : "bg-green-light border-2 border-green text-green"
+      }`}>
+        Спасибо! Светлана свяжется с вами в ближайшее время.
       </div>
     );
   }
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "14px 18px",
-    fontFamily: "'Nunito', sans-serif",
-    fontSize: 16,
-    border: dark ? "1.5px solid rgba(255,255,255,0.25)" : "1.5px solid var(--border)",
-    background: dark ? "rgba(255,255,255,0.07)" : "var(--cream)",
-    color: dark ? "var(--white)" : "var(--dark)",
-    outline: "none",
-    marginBottom: 14,
-  };
+  const inputClasses = `w-full py-3.5 px-[18px] font-body text-base outline-none mb-3.5 ${
+    dark
+      ? "border-[1.5px] border-white/25 bg-white/[0.07] text-white"
+      : "border-[1.5px] border-border bg-cream text-dark"
+  }`;
 
   return (
     <form onSubmit={handleSubmit}>
-      <label className="form-label" style={{ color: dark ? "rgba(255,255,255,0.6)" : undefined }}>
+      <label className={`form-label ${dark ? "!text-white/60" : ""}`}>
         Ваше имя
       </label>
       <input
@@ -77,9 +67,9 @@ export default function ContactForm({ source, quizAnswers, dark, buttonText, pri
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
-        style={inputStyle}
+        className={inputClasses}
       />
-      <label className="form-label" style={{ color: dark ? "rgba(255,255,255,0.6)" : undefined }}>
+      <label className={`form-label ${dark ? "!text-white/60" : ""}`}>
         Телефон или мессенджер
       </label>
       <input
@@ -88,9 +78,9 @@ export default function ContactForm({ source, quizAnswers, dark, buttonText, pri
         value={contact}
         onChange={(e) => setContact(e.target.value)}
         required
-        style={inputStyle}
+        className={inputClasses}
       />
-      {error && <p style={{ fontSize: 13, color: "#e05c5c", marginBottom: 10 }}>{error}</p>}
+      {error && <p className="text-[13px] text-[#e05c5c] mb-2.5">{error}</p>}
       <button
         type="submit"
         disabled={loading}
@@ -98,8 +88,8 @@ export default function ContactForm({ source, quizAnswers, dark, buttonText, pri
       >
         {loading ? "Отправляем..." : (buttonText || "Отправить заявку")}
       </button>
-      <p style={{ fontSize: 12, color: dark ? "rgba(255,255,255,0.3)" : "var(--muted)", textAlign: "center", marginTop: 14 }}>
-        {privacyText || "Не звоним без предупреждения · 2 950 руб./консультация"}
+      <p className={`text-xs text-center mt-3.5 ${dark ? "text-white/30" : "text-muted"}`}>
+        {privacyText || `Не звоним без предупреждения · ${CONSULTATION_PRICE_TEXT}`}
       </p>
     </form>
   );
