@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="footer-bar" style={{
       background: "var(--dark)",
-      padding: "48px 52px",
+      padding: "56px 52px",
     }}>
       <div style={{
         maxWidth: 1080,

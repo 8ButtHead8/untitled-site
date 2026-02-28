@@ -7,6 +7,10 @@ import ContactForm from "@/components/ContactForm";
 export const metadata = {
   title: "Профориентация для взрослых — Светлана Жукова",
   description: "Выгораете или хотите сменить профессию? Консультация с профориентологом, которая сама нашла призвание в 50 лет.",
+  openGraph: {
+    title: "Профориентация для взрослых — Светлана Жукова",
+    description: "Выгораете или хотите сменить профессию? Консультация с профориентологом.",
+  },
 };
 
 const S: Record<string, React.CSSProperties> = {
@@ -29,7 +33,10 @@ export default function AdultsPage() {
         {/* Left: green */}
         <div className="hero-left" style={{
           background: "var(--green)",
-          padding: "88px 52px 80px",
+          paddingTop: 88,
+          paddingRight: 52,
+          paddingBottom: 80,
+          paddingLeft: "max(52px, calc(50vw - 540px))",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -92,7 +99,6 @@ export default function AdultsPage() {
             </div>
             <div className="hero-stats" style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.2)" }}>
               {[
-                { n: "5 015", l: "отзывов" },
                 { n: "50+", l: "лет — нашла себя" },
                 { n: "32", l: "научные работы" },
               ].map((s) => (
@@ -282,7 +288,7 @@ export default function AdultsPage() {
                 «Я нашла своё призвание в 50 лет — после науки, госслужбы, HR и преподавания. Клиенты старше 35 особенно это чувствуют. Я не по книгам знаю, каково это.»
               </p>
               <p style={{ fontSize: 16, color: "var(--muted)", marginBottom: 20, lineHeight: 1.75 }}>
-                Профориентолог, преподаватель, наставник. Кандидат социологических наук. На Профи.ру с 2021 года — <strong style={{ color: "var(--dark)" }}>более 5 000 отзывов</strong>.
+                Профориентолог, преподаватель, наставник. Кандидат социологических наук. Работает онлайн по всей России.
               </p>
               <p style={{ fontSize: 16, color: "var(--muted)", marginBottom: 20, lineHeight: 1.75 }}>
                 До профориентации — 13 лет ведущим научным сотрудником в ВНИИ труда Минтруда России, работа в Министерстве занятости Саратовской области, преподавание в вузе, HR. Соавтор 32 научно-исследовательских работ.
@@ -291,7 +297,7 @@ export default function AdultsPage() {
                 Специализируется на профориентации подростков и взрослых. Работает онлайн — по всей России.
               </p>
               <div className="creds">
-                {["Кандидат социологических наук", "Профориентолог (2024)", "Психолог", "32 научные работы", "5 015 отзывов", "Академия WhoAmI"].map((c) => (
+                {["Кандидат социологических наук", "Профориентолог (2024)", "Психолог", "32 научные работы", "Академия WhoAmI"].map((c) => (
                   <span key={c} className="cred">{c}</span>
                 ))}
               </div>

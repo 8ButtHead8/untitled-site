@@ -257,6 +257,7 @@ export default function QuizParentsPage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [textInput, setTextInput] = useState("");
   const [answeredCount, setAnsweredCount] = useState(0);
+  const [history, setHistory] = useState<string[]>([]);
 
   const currentQ = Q[currentQId];
   const estimatedTotal = getEstimatedTotal(answers);
@@ -272,6 +273,7 @@ export default function QuizParentsPage() {
 
     setAnswers(newAnswers);
     setAnsweredCount((c) => c + 1);
+    setHistory((h) => [...h, currentQId]);
 
     const nextId = getNextId(currentQId, newAnswers);
     if (nextId) {
@@ -281,6 +283,16 @@ export default function QuizParentsPage() {
     } else {
       setPhase("result");
     }
+  }
+
+  function handleBack() {
+    if (history.length === 0) return;
+    const prevId = history[history.length - 1];
+    setHistory((h) => h.slice(0, -1));
+    setCurrentQId(prevId);
+    setSelected(answers[prevId] || null);
+    setTextInput("");
+    setAnsweredCount((c) => Math.max(0, c - 1));
   }
 
   const result = phase === "result" ? getResult(answers) : null;
@@ -309,6 +321,24 @@ export default function QuizParentsPage() {
           {/* ─── Questions ─── */}
           {phase === "quiz" && currentQ && (
             <div>
+              {/* Back button */}
+              {history.length > 0 && (
+                <button
+                  onClick={handleBack}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "var(--muted)",
+                    fontSize: 14,
+                    cursor: "pointer",
+                    padding: "0 0 16px",
+                    fontFamily: "'Nunito', sans-serif",
+                  }}
+                >
+                  ← Назад
+                </button>
+              )}
+
               {/* Progress */}
               <div style={{ marginBottom: 48 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>

@@ -6,7 +6,11 @@ import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: "Профориентация для школьников — Светлана Жукова",
-  description: "Помогите ребёнку определиться с профессией до ЕГЭ. Консультация онлайн — кандидат наук, 5000+ отзывов на Профи.ру.",
+  description: "Помогите ребёнку определиться с профессией до ЕГЭ. Консультация онлайн — кандидат наук, профориентолог.",
+  openGraph: {
+    title: "Профориентация для школьников — Светлана Жукова",
+    description: "Помогите ребёнку определиться с профессией до ЕГЭ.",
+  },
 };
 
 const S: Record<string, React.CSSProperties> = {
@@ -29,7 +33,10 @@ export default function ParentsPage() {
         {/* Left: green */}
         <div className="hero-left" style={{
           background: "var(--green)",
-          padding: "88px 52px 80px",
+          paddingTop: 88,
+          paddingRight: 52,
+          paddingBottom: 80,
+          paddingLeft: "max(52px, calc(50vw - 540px))",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -60,8 +67,7 @@ export default function ParentsPage() {
           <p style={{ fontSize: 16, color: "rgba(255,255,255,.68)", maxWidth: 420, marginBottom: 48, lineHeight: 1.75, animation: "fadeUp .65s .32s ease both" }}>
             Не тест из интернета — живой разговор со Светланой Жуковой,{" "}
             <strong style={{ color: "rgba(255,255,255,.9)", fontWeight: 600 }}>кандидатом наук</strong>{" "}
-            и профориентологом с{" "}
-            <strong style={{ color: "rgba(255,255,255,.9)", fontWeight: 600 }}>более чем 5 000 отзывами</strong>.
+            и профориентологом.
             Ваш ребёнок поймёт куда поступать — за одну встречу.
           </p>
           <Link href="/quiz/parents" className="btn-amber" style={{ animation: "fadeUp .65s .44s ease both" }}>
@@ -94,7 +100,6 @@ export default function ParentsPage() {
             </div>
             <div className="hero-stats" style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,.2)" }}>
               {[
-                { n: "5 015", l: "отзывов" },
                 { n: "4+", l: "года практики" },
                 { n: "32", l: "научные работы" },
               ].map((s) => (
@@ -284,7 +289,7 @@ export default function ParentsPage() {
                 «Я знаю как сложно найти любимое дело. Смогла найти своё призвание только в 50 лет — и теперь помогаю другим не тратить годы на поиск того, что можно найти за одну встречу.»
               </p>
               <p style={{ fontSize: 16, color: "var(--muted)", marginBottom: 20, lineHeight: 1.75 }}>
-                Профориентолог, преподаватель, наставник. Кандидат социологических наук. На Профи.ру с 2021 года — <strong style={{ color: "var(--dark)" }}>более 5 000 отзывов</strong>, один из самых опытных специалистов в своей нише.
+                Профориентолог, преподаватель, наставник. Кандидат социологических наук. Работает онлайн по всей России.
               </p>
               <p style={{ fontSize: 16, color: "var(--muted)", marginBottom: 20, lineHeight: 1.75 }}>
                 До профориентации — 13 лет ведущим научным сотрудником в ВНИИ труда Минтруда России, работа в Министерстве занятости Саратовской области, преподавание в вузе, HR. Соавтор 32 научно-исследовательских работ по психологии и управлению персоналом.
@@ -293,7 +298,7 @@ export default function ParentsPage() {
                 Прошла специализированную подготовку по профориентации подростков в Академии WhoAmI. Работает онлайн — по всей России.
               </p>
               <div className="creds">
-                {["Кандидат социологических наук", "Профориентолог (2024)", "Психолог", "32 научные работы", "5 015 отзывов", "Академия WhoAmI"].map((c) => (
+                {["Кандидат социологических наук", "Профориентолог (2024)", "Психолог", "32 научные работы", "Академия WhoAmI"].map((c) => (
                   <span key={c} className="cred">{c}</span>
                 ))}
               </div>
@@ -342,7 +347,7 @@ export default function ParentsPage() {
             <div className="vs-card featured">
               <p className="vs-label">Светлана Жукова</p>
               <h3 className="vs-h">Один человек. Конкретный результат.</h3>
-              <p className="vs-p">Видите кто работает с вашим ребёнком — её историю, статьи, 5 000+ отзывов. Квиз даёт Светлане контекст ещё до встречи. Напрямую, без посредников.</p>
+              <p className="vs-p">Видите кто работает с вашим ребёнком — её историю и статьи. Квиз даёт Светлане контекст ещё до встречи. Напрямую, без посредников.</p>
             </div>
           </div>
         </div>

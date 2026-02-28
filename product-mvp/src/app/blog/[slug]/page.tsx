@@ -26,6 +26,8 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  // Content comes from trusted local markdown files (content/blog/), not user input.
+  // If user-generated content is ever added, sanitize with DOMPurify.
   const html = marked(post.content);
 
   return (
