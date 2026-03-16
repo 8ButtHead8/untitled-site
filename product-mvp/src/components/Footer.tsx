@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TELEGRAM_URL, TELEGRAM_HANDLE } from "@/data/constants";
 
 export default function Footer() {
@@ -7,14 +8,22 @@ export default function Footer() {
         <p className="text-[13px] text-white/30">
           © 2026 · Светлана Жукова · Профориентолог · Онлайн по всей России
         </p>
-        <a
-          href={TELEGRAM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[13px] text-white/40 no-underline"
-        >
-          Telegram {TELEGRAM_HANDLE}
-        </a>
+        <div className="flex items-center gap-6 flex-wrap">
+          <Link
+            href="/privacy"
+            className="text-[13px] text-white/30 no-underline hover:text-white/50 transition-colors"
+          >
+            Политика конфиденциальности
+          </Link>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[13px] text-white/40 no-underline"
+          >
+            Telegram {TELEGRAM_HANDLE}
+          </a>
+        </div>
       </div>
     </footer>
   );

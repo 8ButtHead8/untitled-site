@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { CONSULTATION_PRICE_TEXT } from "@/data/constants";
 
 interface ContactFormProps {
@@ -14,13 +15,14 @@ interface ContactFormProps {
 export default function ContactForm({ source, quizAnswers, dark, buttonText, privacyText }: ContactFormProps) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
+  const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim() || !contact.trim()) return;
+    if (!name.trim() || !contact.trim() || !consent) return;
     setLoading(true);
     setError("");
     try {
@@ -81,9 +83,28 @@ export default function ContactForm({ source, quizAnswers, dark, buttonText, pri
         className={inputClasses}
       />
       {error && <p className="text-[13px] text-[#e05c5c] mb-2.5">{error}</p>}
+      <label className={`flex items-start gap-2.5 mb-4 cursor-pointer text-xs leading-[1.55] ${dark ? "text-white/50" : "text-muted"}`}>
+        <input
+          type="checkbox"
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          required
+          className="mt-[2px] shrink-0 accent-current"
+        />
+        <span>
+          Я согласен(а) на обработку персональных данных в соответствии с{" "}
+          <Link
+            href="/privacy"
+            target="_blank"
+            className={`underline underline-offset-2 ${dark ? "text-white/70 hover:text-white" : "text-green hover:text-dark"}`}
+          >
+            Политикой конфиденциальности
+          </Link>
+        </span>
+      </label>
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || !consent}
         className="form-btn"
       >
         {loading ? "Отправляем..." : (buttonText || "Отправить заявку")}

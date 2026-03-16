@@ -5,7 +5,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Link from "next/link";
-import { CONSULTATION_PRICE_RUB } from "@/data/constants";
 
 /* ─── Types ─── */
 
@@ -19,7 +18,8 @@ export interface Question {
 
 export interface ResultData {
   title: string;
-  text: string;
+  mirror: string;      // Empathetic reflection of their situation
+  howWeHelp: string;   // Specific approach for their case
   benefits: string[];
   urgentBenefit?: string;
 }
@@ -226,10 +226,25 @@ export default function QuizShell({ config }: { config: QuizConfig }) {
           {phase === "result" && result && (
             <div>
               <p className="tag">Результат квиза</p>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 400, lineHeight: 1.18, color: "var(--green)", marginBottom: 20 }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 400, lineHeight: 1.18, color: "var(--green)", marginBottom: 24 }}>
                 {result.title}
               </h2>
-              <p style={{ fontSize: 17, color: "var(--muted)", lineHeight: 1.72, marginBottom: 32 }}>{result.text}</p>
+
+              {/* Mirror block — we show we understood them */}
+              <div style={{
+                borderLeft: "3px solid var(--amber)",
+                paddingLeft: 24,
+                marginBottom: 28,
+              }}>
+                <p style={{ fontSize: 17, color: "var(--dark)", lineHeight: 1.78, fontStyle: "italic", margin: 0 }}>
+                  {result.mirror}
+                </p>
+              </div>
+
+              {/* How we help in their specific situation */}
+              <p style={{ fontSize: 17, color: "var(--muted)", lineHeight: 1.72, marginBottom: 40 }}>
+                {result.howWeHelp}
+              </p>
 
               <div style={{ background: "var(--white)", border: "2px solid var(--border)", padding: "32px 36px", marginBottom: 48 }}>
                 <p style={{ fontSize: 15, fontWeight: 700, color: "var(--green)", marginBottom: 16, textTransform: "uppercase", letterSpacing: "0.05em" }}>
@@ -253,13 +268,10 @@ export default function QuizShell({ config }: { config: QuizConfig }) {
 
               <div className="quiz-result-form" style={{ background: "var(--green)", padding: "52px" }}>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 400, color: "var(--white)", marginBottom: 8 }}>
-                  Оставьте контакт
+                  Запишитесь на бесплатную встречу
                 </h3>
-                <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 12 }}>
+                <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 36 }}>
                   {config.result.contactDescription}
-                </p>
-                <p style={{ fontSize: 17, color: "var(--amber-2)", fontWeight: 600, marginBottom: 36 }}>
-                  Стоимость консультации: {CONSULTATION_PRICE_RUB}
                 </p>
                 <ContactForm
                   source={config.result.source}

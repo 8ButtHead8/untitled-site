@@ -3,35 +3,63 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
-import { getPostBySlug, getAllPosts } from "@/lib/blog";
+import { getPostBySlug } from "@/lib/blog";
 import { marked } from "marked";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  return getAllPosts().map((p) => ({ slug: p.slug }));
-}
-
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) return {};
-  return { title: `${post.title} — Светлана Жукова`, description: post.excerpt };
+  return { title: post.title, description: post.excerpt };
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
   // Content comes from trusted local markdown files (content/blog/), not user input.
   // If user-generated content is ever added, sanitize with DOMPurify.
   const html = marked(post.content);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://moy-proforientolog.ru";
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "Светлана Жукова",
+      jobTitle: "Профориентолог",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Светлана Жукова",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blog/${slug}`,
+    },
+    image: `${siteUrl}/images/photo-hero.jpg`,
+    inLanguage: "ru",
+  };
+
   return (
     <div style={{ background: "var(--cream)", minHeight: "100vh" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Navigation />
 
       <article style={{ paddingTop: 64 }}>

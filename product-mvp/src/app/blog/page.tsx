@@ -3,13 +3,15 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { getAllPosts } from "@/lib/blog";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
-  title: "Блог — Светлана Жукова",
+  title: "Блог",
   description: "Статьи о профориентации, выборе профессии, выгорании и карьерных переходах.",
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllPosts();
 
   return (
     <div style={{ background: "var(--cream)", minHeight: "100vh" }}>

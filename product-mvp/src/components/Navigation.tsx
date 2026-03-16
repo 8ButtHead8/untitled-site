@@ -14,6 +14,7 @@ export default function Navigation() {
     { href: "/parents", label: "Родителям" },
     { href: "/adults", label: "Взрослым" },
     { href: "/blog", label: "Блог" },
+    { href: "/reviews", label: "Отзывы" },
   ];
 
   return (
